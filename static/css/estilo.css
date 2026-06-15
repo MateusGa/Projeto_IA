@@ -169,6 +169,31 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 8px 25px rgba(31, 38, 135, 0.05);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
     padding: 26px !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: 0.75s;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.card:hover::before {
+    left: 150%;
 }
 
 .card:hover {
@@ -470,4 +495,225 @@ footer p {
     66% {
         transform: translateY(25px) translateX(-25px) scale(0.95);
     }
+}
+
+/* Water Droplets */
+.droplet {
+    position: absolute;
+    background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(79, 172, 254, 0.25) 60%, rgba(255, 255, 255, 0) 80%);
+    border: 1.5px solid rgba(255, 255, 255, 0.65);
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.7), inset 0 -4px 10px rgba(0,0,0,0.03), 0 8px 20px rgba(0, 174, 255, 0.12);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    animation: float-bubble 24s infinite ease-in-out;
+    pointer-events: none;
+    z-index: -9;
+}
+
+.droplet-1 {
+    width: 50px;
+    height: 50px;
+    left: 70%;
+    top: 40%;
+    animation-duration: 22s;
+    animation-delay: -3s;
+}
+
+.droplet-2 {
+    width: 70px;
+    height: 70px;
+    left: 30%;
+    bottom: 25%;
+    animation-duration: 26s;
+    animation-delay: -7s;
+}
+
+/* Green Leaves */
+.leaf {
+    position: absolute;
+    width: 45px;
+    height: 25px;
+    background: linear-gradient(135deg, rgba(168, 255, 120, 0.75), rgba(120, 255, 214, 0.75));
+    border-radius: 0 100% 0 100%;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    animation: float-leaf 28s infinite ease-in-out;
+    transform-origin: center;
+    pointer-events: none;
+    z-index: -9;
+}
+
+.leaf-1 {
+    left: 80%;
+    top: 65%;
+    animation-duration: 24s;
+    animation-delay: -2s;
+}
+
+.leaf-2 {
+    left: 5%;
+    bottom: 50%;
+    animation-duration: 32s;
+    animation-delay: -12s;
+}
+
+@keyframes float-leaf {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+    }
+    33% {
+        transform: translateY(-60px) translateX(30px) rotate(45deg) scale(1.05);
+    }
+    66% {
+        transform: translateY(30px) translateX(-30px) rotate(-45deg) scale(0.95);
+    }
+}
+
+/* Custom Windows Vista / Glassy Scrollbar */
+::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(5px);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 49%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.05) 100%), linear-gradient(135deg, #00f2fe, #4facfe);
+    border-radius: 10px;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 5px rgba(0, 174, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    filter: brightness(1.1);
+}
+
+/* Custom 2000s/Aero Bubble Cursor on Hover */
+a, button, input[type="submit"], select, .linhazinha, .nav-link, .dropdown-item {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='8' fill='rgba(0, 242, 254, 0.35)' stroke='rgba(255, 255, 255, 0.9)' stroke-width='2'/><circle cx='9' cy='9' r='2.5' fill='rgba(255, 255, 255, 0.75)'/><circle cx='15' cy='15' r='1.5' fill='rgba(255, 255, 255, 0.4)'/></svg>") 12 12, pointer !important;
+}
+
+/* Custom Text Selection */
+::selection {
+    background: rgba(0, 242, 254, 0.35);
+    color: #1a365d;
+}
+
+/* Ticker Marquee Style */
+.ticker-wrap {
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin: 15px auto 0 auto;
+    max-width: 90%;
+    padding: 6px 20px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 174, 255, 0.05);
+}
+
+.ticker-title {
+    background: var(--primary-glossy);
+    color: white;
+    font-weight: 800;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-right: 15px;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.ticker {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.ticker__item {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 25s linear infinite;
+    font-weight: 700;
+    font-size: 13px;
+    color: #2a4365;
+    font-family: var(--font-bubbly);
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+/* Retro 88x31 Web Badges */
+.badge-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.web-badge {
+    width: 88px;
+    height: 31px;
+    font-size: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    font-weight: 800;
+    border: 1px solid #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.1;
+    box-sizing: border-box;
+    position: relative;
+    user-select: none;
+    box-shadow: 1px 1px 0px rgba(255, 255, 255, 0.6) inset, -1px -1px 0px rgba(0, 0, 0, 0.4) inset;
+    border-radius: 2px;
+}
+
+.web-badge span {
+    transform: scale(0.95);
+}
+
+.badge-ie {
+    background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%), #00539c;
+    color: #fff;
+    border-color: #002244;
+}
+
+.badge-comic {
+    background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%), #f1c40f;
+    color: #000;
+    font-family: 'Comic Sans MS', cursive, sans-serif !important;
+    font-size: 7px;
+}
+
+.badge-comic span {
+    font-family: 'Comic Sans MS', cursive, sans-serif !important;
+}
+
+.badge-aero {
+    background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 49%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.05) 100%), linear-gradient(135deg, #00f2fe, #4facfe);
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+.badge-django {
+    background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%), #092e20;
+    color: #fff;
 }
