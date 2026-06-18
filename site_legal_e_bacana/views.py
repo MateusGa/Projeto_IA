@@ -17,6 +17,13 @@ from django.shortcuts import redirect
 class Index(TemplateView):
     template_name = "site_legal_e_bacana/inicio.html"
     paginate_by = 50
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    
+    #     Eve_entrega = Evento.objects.all().order_by("-Evento_entrega") [:3]
+    #     context = ["Evento"] = Eve_entrega
+    #     return context
 
 
 

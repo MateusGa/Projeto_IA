@@ -299,6 +299,7 @@ footer p {
 .linhazinha {
     color: #00aeff;
     font-weight: 700;
+    text-decoration: none !important;
     transition: color 0.2s ease, text-shadow 0.2s ease;
     border-bottom: 2px dashed rgba(0, 174, 255, 0.3);
 }
@@ -360,6 +361,18 @@ footer p {
     transition: font-size 0.3s ease;
 }
 
+#dvd:hover::before{
+content: '';
+    position: absolute;
+    top: -50px;
+    /* Expands the hitbox 20px upwards */
+    bottom: -50px;
+    /* Expands the hitbox 20px downwards */
+    left: -50px;
+    /* Expands the hitbox 20px to the left */
+    right: -50px;
+    /* Expands the hitbox 20px to the right */
+}
 #dvd:hover {
     font-size: 0px !important;
 }

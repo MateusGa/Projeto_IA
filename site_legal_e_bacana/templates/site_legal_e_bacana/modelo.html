@@ -94,9 +94,9 @@ Menu
 
 <!-- Retro Web 2.0 Ticker / Marquee -->
 <div class="ticker-wrap">
-    <div class="ticker-title">INFO</div>
+    <div class="ticker-title">COISAS</div>
     <div class="ticker">
-        <div class="ticker__item">💿 BEM-VINDO AO CALENDÁRIO ACADÊMICO MAIS LEGAL DA WEB 2.0! 💿 &emsp;&emsp; 🔥 ATENÇÃO: ENTREGA DE TRABALHOS PRÓXIMA, NÃO PERCA SEUS PRAZOS! 🔥 &emsp;&emsp; 💡 DICA: REVISE SUAS SUBTAREFAS DIARIAMENTE PARA EVITAR O DESESPERO! 💡</div>
+        <div class="ticker__item">BEM VINDO AO SITE DE CALENDÁRIO  &emsp;&emsp; 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥UM SITE QUE É UM CALENDÁRIO🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 &emsp;&emsp; 💡 É SÓ ISSO, UM CALENDÁRIO 💡</div>
     </div>
 </div>
 
@@ -148,16 +148,16 @@ O layout é simples, responsivo e utiliza algumas cores suaves.
 
 <h5 class="comic">Rodapé</h5>
 
-<p> © 2026 MeuSite - Todos os direitos reservados.</p>
+<p class="ondinha"> © 2026 MeuSite - Todos os direitos reservados.</p>
 
 <p>Links úteis | Política de Privacidade | Contato</p>
 
 <!-- Retro 88x31 Web Badges -->
 <div class="badge-container">
-    <div class="web-badge badge-ie"><span>IE 6.0<br>BEST VIEWED</span></div>
-    <div class="web-badge badge-comic"><span>COMIC SANS<br>APPROVED</span></div>
-    <div class="web-badge badge-aero"><span>FRUTIGER<br>AERO</span></div>
-    <div class="web-badge badge-django"><span>DJANGO<br>INSIDE</span></div>
+    <div class="web-badge badge-ie"><span>' &emsp;&emsp; '<br>_</span></div>
+    <div class="web-badge badge-comic"><span>QUADRADO AMARELO<br>LEGAL</span></div>
+    <div class="web-badge badge-aero"><span>EU<br>NÃO SEI COMO ISO FICARÁ, VISTO QUE É UM TEXTO GIGANTE</span></div>
+    <div class="web-badge badge-django"><span>TEM<br>DJANGO</span></div>
 </div>
 
 </footer>
@@ -228,6 +228,19 @@ document.addEventListener("DOMContentLoaded", function() {
             elemento.appendChild(span);
         }
     });
+});
+
+const bolhas_estourar = document.querySelectorAll('.bubbles');
+
+// 2. Loop through each element to attach the click event listener
+bolhas_estourar.forEach(bolhas_estourar => {
+  bolhas_estourar.addEventListener('click', (event) => {
+    // 3. Put your custom action here
+    console.log('Element clicked!', event.target);
+    
+    // Example: Toggle a "highlight" class on the clicked element
+    event.target.classList.toggle('highlight'); 
+  });
 });
 </script>
 
