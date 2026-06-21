@@ -14,7 +14,7 @@
 <!-- Bootstrap CDN -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+<link id="theme-css" rel="stylesheet" href="{% static 'css/estilo.css' %}">
 
 </head>
 <body>
@@ -38,7 +38,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 <div class="container">
 
-<a class="navbar-brand comic" href="{%url "Le_Start" %}" style="font-size: 25px;" >Calendário</a>
+<a class="navbar-brand comic som_de_voltar" href="{%url "Le_Start" %}" style="font-size: 25px;" >Calendário</a>
 
 <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
 <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
 <ul class="navbar-nav ms-auto">
 
 <li class="nav-item">
-<a class="nav-link comic" href="{%url "Le_Start" %}">Início</a>
+<a class="nav-link comic som_dos_link" href="{%url "Le_Start" %}">Início</a>
 </li>
 
 <li class="nav-item dropdown">
@@ -59,30 +59,32 @@ Menu
 
 <ul class="dropdown-menu">
 
-<li><a class="dropdown-item comic" href="{% url 'eventos_listar' %}">Eventos</a></li>
-<li><a class="dropdown-item comic" href="{% url 'subtarefas_listar' %}">Subtarefas</a></li>
-<li><a class="dropdown-item comic" href="{% url 'lembretes_listar' %}">Lembretes</a></li>
-<li><a class="dropdown-item comic" href="{% url 'anexos_listar' %}">Anexos</a></li>
-<li><a class="dropdown-item comic" href="{% url 'participantes_listar' %}">Participantes</a></li>
+<li><a class="dropdown-item comic som_dos_link" href="{% url 'eventos_listar' %}">Eventos</a></li>
+<li><a class="dropdown-item comic som_dos_link" href="{% url 'subtarefas_listar' %}">Subtarefas</a></li>
+<li><a class="dropdown-item comic som_dos_link" href="{% url 'lembretes_listar' %}">Lembretes</a></li>
+<li><a class="dropdown-item comic som_dos_link" href="{% url 'anexos_listar' %}">Anexos</a></li>
+<li><a class="dropdown-item comic som_dos_link" href="{% url 'participantes_listar' %}">Participantes</a></li>
 </ul>
 </li>
 
 <li class="nav-item">
-<a class="nav-link comic" href="{% url "sobre" %}">Sobre Nós</a>
+<a class="nav-link comic som_dos_link" href="{% url "sobre" %}">Sobre Nós</a>
 </li>
 
 {% if request.user.is_authenticated %}
 <li class="nav-item">
-<a class="nav-link comic" style="padding-left:70px;" href="{% url 'password_change' %}">Alterar senha</a>
+<a class="nav-link comic som_dos_link" style="padding-left:70px;" href="{% url 'password_change' %}">Alterar senha</a>
 </li>
 <li class="nav-item">
-<a class="nav-link comic" style="color: rgb(253, 154, 154);" href="{% url 'logout' %}">Sair</a>
+<a class="nav-link comic som_dos_link" style="color: rgb(253, 154, 154);" href="{% url 'logout' %}">Sair</a>
 </li>
 {% else %}
 <li class="nav-item">
-<a class="nav-link comic" style="padding-left:70px;" href="{% url 'login' %}">Entrar</a>
+<a class="nav-link comic som_dos_link" style="padding-left:70px;" href="{% url 'login' %}">Entrar</a>
 </li>
 {% endif %}
+
+
 
 </ul>
 
@@ -154,7 +156,7 @@ O layout é simples, responsivo e utiliza algumas cores suaves.
 
 <!-- Retro 88x31 Web Badges -->
 <div class="badge-container">
-    <div class="web-badge badge-ie"><span>' &emsp;&emsp; '<br>_</span></div>
+    <div class="web-badge badge-ie" id="dark-mode-toggle" style="cursor: pointer;"><span>' &emsp;&emsp; '<br>_</span></div>
     <div class="web-badge badge-comic"><span>QUADRADO AMARELO<br>LEGAL</span></div>
     <div class="web-badge badge-aero"><span>EU<br>NÃO SEI COMO ISO FICARÁ, VISTO QUE É UM TEXTO GIGANTE</span></div>
     <div class="web-badge badge-django"><span>TEM<br>DJANGO</span></div>
@@ -168,6 +170,43 @@ O layout é simples, responsivo e utiliza algumas cores suaves.
 
 <!-- Script para animação ondinha global -->
 <script>
+
+    const som_link = new Audio("{% static 'sons/r0t0r-click-151673.mp3' %}");
+
+// 2. Seleciona todos os links com a classe específica
+const som_dos_link = document.querySelectorAll('.som_dos_link');
+
+// 3. Adiciona o evento de hover (mouseenter) em cada um deles
+som_dos_link.forEach(link => {
+  link.addEventListener('mouseenter', () => {
+    // Reinicia o áudio para o início (essencial para quando o usuário passa o mouse rápido por vários links)
+    som_link.currentTime = 0;
+    
+    // Toca o som
+    som_link.play().catch(erro => {
+      console.log("O áudio não pôde tocar porque o usuário ainda não interagiu com a página.");
+    });
+  });
+});
+
+const som_voltar = new Audio("{% static 'sons/Back.mp3' %}");
+
+const som_de_voltar = document.querySelectorAll('.som_de_voltar');
+
+som_de_voltar.forEach(link => {
+  link.addEventListener('mouseenter', () => {
+   
+    som_voltar.currentTime = 0;
+    
+
+    som_voltar.play().catch(erro => {
+      console.log("O áudio não pôde tocar porque o usuário ainda não interagiu com a página.");
+    });
+  });
+});
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     function corAleatoria() {
         let r = Math.floor(Math.random()*256);
@@ -230,18 +269,54 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-const bolhas_estourar = document.querySelectorAll('.bubbles');
 
-// 2. Loop through each element to attach the click event listener
-bolhas_estourar.forEach(bolhas_estourar => {
-  bolhas_estourar.addEventListener('click', (event) => {
-    // 3. Put your custom action here
-    console.log('Element clicked!', event.target);
-    
-    // Example: Toggle a "highlight" class on the clicked element
-    event.target.classList.toggle('highlight'); 
+
+const bolhas_estourar = document.querySelectorAll('.bubble');
+
+bolhas_estourar.forEach(bolha => {
+  bolha.addEventListener('click', (event) => {
+    console.log('Bolha clicada!', event.currentTarget);
+    event.currentTarget.classList.toggle('highlight');
   });
 });
+
+// Dark Mode Toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const themeLink = document.getElementById('theme-css');
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  const themeToggleBadge = document.getElementById('theme-toggle-badge');
+  const savedTheme = localStorage.getItem('theme') || 'light';
+
+  // Função para alternar tema
+  function toggleTheme() {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    if (currentTheme === 'light') {
+      themeLink.href = "{% static 'css/estilo_dark.css' %}";
+      localStorage.setItem('theme', 'dark');
+      
+    } else {
+      themeLink.href = "{% static 'css/estilo.css' %}";
+      localStorage.setItem('theme', 'light');
+      
+    }
+  }
+
+  // Restaurar tema salvo
+  if (savedTheme === 'dark') {
+    themeLink.href = "{% static 'css/estilo_dark.css' %}";
+    
+  }
+
+  // Event listener para o botão da navbar
+  darkModeToggle.addEventListener('click', toggleTheme);
+
+  // Event listener para o badge
+  themeToggleBadge.addEventListener('click', toggleTheme);
+});
+
+
+
 </script>
 
 </body>
