@@ -16,6 +16,34 @@
 
 <link id="theme-css" rel="stylesheet" href="{% static 'css/estilo.css' %}">
 
+<style>
+  {
+.ticker {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticker__item {
+    display: inline-block;
+}
+
+.animar {
+    animation: ticker 3s linear;
+}
+
+@keyframes ticker {
+    from {
+        transform: translateX(100vw);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+  }
+</style>
+
 </head>
 <body>
 
@@ -98,7 +126,7 @@ Menu
 <div class="ticker-wrap">
     <div class="ticker-title">COISAS</div>
     <div class="ticker">
-        <div class="ticker__item">BEM VINDO AO SITE DE CALENDÁRIO  &emsp;&emsp; 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥UM SITE QUE É UM CALENDÁRIO🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 &emsp;&emsp; 💡 É SÓ ISSO, UM CALENDÁRIO 💡</div>
+        <div class="ticker__item" id="tickerTexto"></div>
     </div>
 </div>
 
@@ -315,7 +343,41 @@ document.addEventListener('DOMContentLoaded', function() {
   themeToggleBadge.addEventListener('click', toggleTheme);
 });
 
+const mensagens = [
+    "BEM VINDO AO SITE DE CALENDÁRIO 🔥🔥🔥🔥🔥",
+    "UM SITE QUE É UM CALENDÁRIO 🗓️",
+    "É SÓ ISSO, UM CALENDÁRIO 🗣️🗣️🗣️",
+    "VOCÊ TEM EVENTOS PARA CADASTRAR?",
+    "SE LEMBRE DE EXCLUIR EVENTOS ANTIGOS",
+    "AGORA COM 50% MAIS CORES!",
+    "POR FAVOR USE O SITE",
+    "CALENDÁRIO 2: O RETORNO",
+    "O MELHOR CALENDÁRIO FEITO POR VOCÊ",
+    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+];
 
+
+
+const ticker = document.getElementById("tickerTexto");
+
+function trocarMensagem() {
+    const indice = Math.floor(Math.random() * mensagens.length);
+
+    ticker.textContent = mensagens[indice];
+
+    // reinicia a animação
+    ticker.classList.remove("animar");
+
+    // força o navegador a perceber a remoção
+    void ticker.offsetWidth;
+
+    ticker.classList.add("animar");
+}
+
+ticker.addEventListener("animationend", trocarMensagem);
+
+// primeira mensagem
+trocarMensagem();
 
 </script>
 

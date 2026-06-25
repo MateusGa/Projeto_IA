@@ -18,8 +18,62 @@
 
     {%block conteudo%}
 
+    {% comment %} {% if titulosAleatorios == 0%}
+        <h1 id="titulo" class="treme" >A Tela de Início do Site de Calendário</h1>
 
-    <h1 id="titulo" class="treme" >A Tela de Início do Site de Calendário</h1>
+    {% elif titulosAleatorios == 1%}
+
+        {% if request.user.is_authenticated%}
+            <h1 id="titulo" class="treme" >Você, {{user.username}}, voltou para o site do calendário, por algum motivo</h1>
+        {%else%}
+            <h1 id="titulo" class="treme" >Porque você não loga em uma conta?</h1>
+        {%endif%}
+
+
+     {% elif titulosAleatorios == 2%}
+        <h1 id="titulo" class="treme" >O Título da Tela de Início do Site de Calendário</h1>
+
+
+     {% elif titulosAleatorios == 3%}
+        <h1 id="titulo" class="treme" >Porque eu fui inventar de fazer 10 desses</h1>
+
+
+     {% elif titulosAleatorios == 4%}
+        <h1 id="titulo" class="treme" >Tenta clicar no botão azul do fundo da tela</h1>
+
+
+     {% elif titulosAleatorios == 5%}
+        <h1 id="titulo" class="treme" >Agora com 50% mais cores!</h1>
+
+
+     {% elif titulosAleatorios == 6%}
+        <h1 id="titulo" class="treme" >Se lembre de excluir eventos antigos</h1>
+
+
+     {% elif titulosAleatorios == 7%}
+        <h1 id="titulo" class="treme" >Esse é caso o random saia 7</h1>
+
+
+     {% elif titulosAleatorios == 8%}
+        <h1 id="titulo" class="treme" >*Texto Criativo*</h1>
+
+
+     {% elif titulosAleatorios == 9%}
+        <h1 id="titulo" class="treme" >AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h1>
+
+
+     {% elif titulosAleatorios == 10%}
+        <h1 id="titulo" class="treme" >Olha o DVD vuando aksdkak</h1>
+
+
+     {% else %}
+        <h1 id="titulo" class="treme" >Algo deu errado, F</h1>
+
+    {%endif%} {% endcomment %}
+
+
+    <h1 id="titulo" class="treme">A Tela de Início do Site de Calendário</h1>
+
     <p id="dvd" class="som_dos_link" >💿</p>
 
    
@@ -77,6 +131,13 @@ function animar(){
     requestAnimationFrame(animar);
     
 }
+
+{% comment %} function titulosAleatorios()
+{
+
+return Math.floor(Math.random() * 11);
+
+} {% endcomment %}
 
 animar();
 </script>
