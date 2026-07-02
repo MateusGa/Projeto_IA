@@ -18,7 +18,7 @@
 
     {%block conteudo%}
 
-    {% comment %} {% if titulosAleatorios == 0%}
+    {% if titulosAleatorios == 0%}
         <h1 id="titulo" class="treme" >A Tela de Início do Site de Calendário</h1>
 
     {% elif titulosAleatorios == 1%}
@@ -59,7 +59,7 @@
 
 
      {% elif titulosAleatorios == 9%}
-        <h1 id="titulo" class="treme" >AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h1>
+        <h1 id="titulo" class="treme" >AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h1>
 
 
      {% elif titulosAleatorios == 10%}
@@ -69,10 +69,8 @@
      {% else %}
         <h1 id="titulo" class="treme" >Algo deu errado, F</h1>
 
-    {%endif%} {% endcomment %}
+    {%endif%}
 
-
-    <h1 id="titulo" class="treme">A Tela de Início do Site de Calendário</h1>
 
     <p id="dvd" class="som_dos_link" >💿</p>
 
@@ -132,12 +130,12 @@ function animar(){
     
 }
 
-{% comment %} function titulosAleatorios()
+function titulosAleatorios()
 {
 
 return Math.floor(Math.random() * 11);
 
-} {% endcomment %}
+}
 
 animar();
 </script>

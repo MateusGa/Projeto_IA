@@ -4,6 +4,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView 
 from django.urls import reverse_lazy
 from datetime import *
+import random
 from .models import Evento, Subtarefa, Anexo, Lembrete, User, Usuario, Participante
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
@@ -17,13 +18,11 @@ from django.shortcuts import redirect
 class Index(TemplateView):
     template_name = "site_legal_e_bacana/inicio.html"
     paginate_by = 50
-    
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    
-    #     Eve_entrega = Evento.objects.all().order_by("-Evento_entrega") [:3]
-    #     context = ["Evento"] = Eve_entrega
-    #     return context
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["titulosAleatorios"] = random.randint(0, 10)
+        return context
 
 
 

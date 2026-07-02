@@ -17,31 +17,30 @@
 <link id="theme-css" rel="stylesheet" href="{% static 'css/estilo.css' %}">
 
 <style>
-  {
 .ticker {
     overflow: hidden;
     white-space: nowrap;
+    width: 100%;
 }
 
 .ticker__item {
     display: inline-block;
+    padding-right: 1rem;
+    will-change: transform;
 }
 
 .animar {
-    animation: ticker 3s linear;
+    animation: ticker 25s linear forwards;
 }
 
 @keyframes ticker {
     from {
-        transform: translateX(100vw);
+        transform: translateX(40%);
     }
     to {
-        transform: translateX(-100%);
+        transform: translateX(-120%);
     }
 }
-
-
-  }
 </style>
 
 </head>
@@ -357,26 +356,21 @@ const mensagens = [
 ];
 
 
-
 const ticker = document.getElementById("tickerTexto");
 
 function trocarMensagem() {
     const indice = Math.floor(Math.random() * mensagens.length);
-
     ticker.textContent = mensagens[indice];
 
-    // reinicia a animação
     ticker.classList.remove("animar");
-
-    // força o navegador a perceber a remoção
     void ticker.offsetWidth;
-
     ticker.classList.add("animar");
 }
 
-ticker.addEventListener("animationend", trocarMensagem);
+ticker.addEventListener("animationend", () => {
+    setTimeout(trocarMensagem, 100);
+});
 
-// primeira mensagem
 trocarMensagem();
 
 </script>
