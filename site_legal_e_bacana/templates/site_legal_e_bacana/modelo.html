@@ -103,7 +103,10 @@ Menu
 <a class="nav-link comic som_dos_link" style="padding-left:70px;" href="{% url 'password_change' %}">Alterar senha</a>
 </li>
 <li class="nav-item">
-<a class="nav-link comic som_dos_link" style="color: rgb(253, 154, 154);" href="{% url 'logout' %}">Sair</a>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+<button type="submit" class="nav-link comic som_dos_link" style="color: rgb(253, 154, 154);" href="">Sair</button>
+</form>
 </li>
 {% else %}
 <li class="nav-item">
@@ -351,8 +354,34 @@ const mensagens = [
     "AGORA COM 50% MAIS CORES!",
     "POR FAVOR USE O SITE",
     "CALENDÁRIO 2: O RETORNO",
-    "O MELHOR CALENDÁRIO FEITO POR VOCÊ",
-    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    "O MELHOR CALENDÁRIO FEITO PARA VOCÊ",
+    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "NÃO ESQUEÇA SUA SENHA, SÓ UM CONSELHO",
+    "MAIS UM TEXTO ALEATÓRIO, PARA A BARRA ALEATÓRIA",
+    "JÁ JOGOU MINECRAFT?",
+    "INSCREVÁ-SE, DE O LIKE E ATIVE O SININHO",
+    "TEM VÁRIAS COISAS ESCONDIDAS NO SITE, TENTA ACHAR ALGUMAS",
+    "DÊ SUGESTÕES DE FEATURES (NÃO PRECISAM SER SÉRIAS)",
+    "T  E  X  T  O     L  O  N  G  O",
+    "Porque todos esses textos estão em caixa alta?",
+    "G",
+    "AGORA + OU - FUNCIONAL, ISSO É 50% A MAIS QUE ANTES",
+    "O BARULHO DA OPÇÃO CALENDÁRIO É MUITO ALTA",
+    "PORFAVOR NÃO ME PROCESSA MICROSOFT 😭😭😭",
+    "AGORA SÃO... SLA, NÃO SEI VER RELÓGIO",
+    "TENTE ADIVINHAR O PRÓXIMO TEXTO",
+    "EU TO GASTANDO TEMPO DEMAIS NESSA BARRA",
+    "ME DÁ UM A PROFESSOR, É UM CALENDÁRIO LEGAL",
+    "HACKEANDO SUA CONTA BANCÁRIA",
+    "VOCÊ SABIA QUE SE VOCÊ SPAMMAR 0, E 1, AS PESSOAS ACHAM QUE É BINÁRIO?",
+    "0100 0010 1101 1011 0011 01010 0111 0001",
+    "TOC TOC",
+    "VOCÊ PERDEU O JOGO",
+    " :>",
+    "HIDRATE-SE",
+    "DO YOU SPEAK THE BOKIUNDETABLE?",
+    "°____________________________________________________________°",
+
 ];
 
 

@@ -24,7 +24,7 @@
     {% elif titulosAleatorios == 1%}
 
         {% if request.user.is_authenticated%}
-            <h1 id="titulo" class="treme" >Você, {{user.username}}, voltou para o site do calendário, por algum motivo</h1>
+            <h1 id="titulo" class="treme" >Você, {{user.username}}, voltou para o site do calendário, porque?/h1>
         {%else%}
             <h1 id="titulo" class="treme" >Porque você não loga em uma conta?</h1>
         {%endif%}

@@ -2,18 +2,32 @@
 
 from django.urls import path
 from .views import *
+from django.contrib.auth.views import (
+    LoginView, LogoutView, PasswordChangeView
+)
 
 urlpatterns = [
     
     #Views para autenticação
-    path("login/", UsuarioLogin.as_view(), name="login"),
-    path("logout/", usuario_logout, name="logout"),
+    # path("login/", UsuarioLogin.as_view(), name="login"),
+    # path("logout/", usuario_logout, name="logout"),
     path("cadastro/", UsuarioRegister.as_view(), name="register"),
-    path("senha/alterar/", UsuarioPasswordChange.as_view(), name="password_change"),
+    # path("senha/alterar/", UsuarioPasswordChange.as_view(), name="password_change"),
     path("senha/alterar/concluido/", UsuarioPasswordChangeDone.as_view(), name="password_change_done"),
     
     
-    
+     # Views de autenticação
+    path("login/", LoginView.as_view(
+        template_name = "site_legal_e_bacana/login.html",
+    ), name="login"),
+
+    # View de Logout
+    path("logout/", LogoutView.as_view(), name="logout"),
+
+    # View para alterar a senha do usuário
+    path("alterar-senha/", PasswordChangeView.as_view(
+        template_name = "site_legal_e_bacana/password_change_form.html",
+    ), name="password_change"),
     
     
     
