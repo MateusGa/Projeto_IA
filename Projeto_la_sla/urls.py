@@ -21,5 +21,8 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("site_legal_e_bacana.urls")),
+
+    #URL do Django admin Toolbar
+    path('__debug__/', include('debug_toolbar.urls')),
     #sempre começa com path
 ]

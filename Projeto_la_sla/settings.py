@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     #Ativar o crispy para montar os forms
     'crispy_forms',
     'crispy_bootstrap5',
+
+    #Django debug toolbar
+    "debug_toolbar",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
@@ -60,6 +63,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
+    #Middleware do Django
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "Projeto_la_sla.urls"
@@ -143,3 +149,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "Le_Start"
 LOGOUT_REDIRECT_URL = "login"
+
+#Configurações do Django Debug Toolbar
+
+INTERNAL_IPS = [
+
+    "127.0.0.1",
+]

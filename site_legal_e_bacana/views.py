@@ -12,6 +12,7 @@ from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeDoneView
 from django.contrib.auth import logout, update_session_auth_hash
 from django.shortcuts import redirect
+from braces.views import GroupRequiredMixin
 
 
 
