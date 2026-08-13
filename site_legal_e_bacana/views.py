@@ -165,6 +165,7 @@ class EventoList(LoginRequiredMixin, ListView):
 
     model = Evento
     template_name = "site_legal_e_bacana/listas/eventos.html"
+    paginate_by = 10
 
     def get_queryset(self):
 
@@ -273,6 +274,7 @@ class SubtarefaList(LoginRequiredMixin, ListView):
 
     model = Subtarefa
     template_name = "site_legal_e_bacana/listas/subtarefas.html"
+    paginate_by = 20
     def get_queryset(self):
         queryset = super().get_queryset().filter(Subtarefa_usuario=self.request.user)
 
@@ -357,6 +359,7 @@ class AnexoList(LoginRequiredMixin, ListView):
 
     model = Anexo
     template_name = "site_legal_e_bacana/listas/anexos.html"
+    paginate_by = 20
     def get_queryset(self):
         queryset = super().get_queryset().filter(Anexo_usuario=self.request.user)
 
@@ -440,6 +443,7 @@ class LembreteList(LoginRequiredMixin, ListView):
 
     model = Lembrete
     template_name = "site_legal_e_bacana/listas/lembretes.html"
+    paginate_by = 20
     def get_queryset(self):
         queryset = super().get_queryset().filter(Lembrete_usuario=self.request.user)
 
@@ -522,6 +526,7 @@ class ParticipanteList(LoginRequiredMixin, ListView):
 
     model = Participante
     template_name = "site_legal_e_bacana/listas/participante.html"
+    paginate_by = 20
     def get_queryset(self):
         queryset = super().get_queryset().filter(Participante_usuario=self.request.user)
 

@@ -1,5 +1,6 @@
 {% extends "site_legal_e_bacana/modelo.html" %}
 {% load static %}
+{% load querystring_tags %}
 
 {% block conteudo %}
 
@@ -45,6 +46,8 @@
 </table>
 
  <a class="comic  btn btn-primary som_dos_link" href="{% url 'subtarefas_create' %}" style="border: 2px solid #00aeff; font-size: 30px">Criar</a> &emsp;
+
+{% include "site_legal_e_bacana/includes/paginacao.html" %}
 
 </div>
 

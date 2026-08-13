@@ -151,8 +151,13 @@ LOGIN_REDIRECT_URL = "Le_Start"
 LOGOUT_REDIRECT_URL = "login"
 
 #Configurações do Django Debug Toolbar
-
+# Exibe apenas em endereços locais (localhost / loopback)
 INTERNAL_IPS = [
-
     "127.0.0.1",
+    "localhost",
+    "::1",
 ]
+
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": lambda request: request.META.get("REMOTE_ADDR") in {"127.0.0.1", "::1", "localhost"},
+}

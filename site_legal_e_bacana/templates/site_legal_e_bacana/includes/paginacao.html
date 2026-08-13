@@ -1,0 +1,48 @@
+{% load static %}
+{% load querystring_tags %}
+
+{% if is_paginated %}
+    <nav aria-label="Paginação" class="paginacao-nav comic d-flex flex-column align-items-center mt-4 mb-3">
+        <ul class="pagination pagination-sm paginacao comic mb-2">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link paginacao-link" href="{% pagination_url page_obj.previous_page_number %}" aria-label="Página anterior">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link paginacao-link disabled-link" aria-hidden="true">&laquo;</span>
+                </li>
+            {% endif %}
+
+            {% for page in paginator.page_range %}
+                {% if page == page_obj.number %}
+                    <li class="page-item active" aria-current="page">
+                        <span class="page-link paginacao-link active-link">{{ page }}</span>
+                    </li>
+                {% elif page >= page_obj.number|add:"-2" and page <= page_obj.number|add:"2" %}
+                    <li class="page-item">
+                        <a class="page-link paginacao-link" href="{% pagination_url page %}">{{ page }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link paginacao-link" href="{% pagination_url page_obj.next_page_number %}" aria-label="Próxima página">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link paginacao-link disabled-link" aria-hidden="true">&raquo;</span>
+                </li>
+            {% endif %}
+        </ul>
+
+        <div class="paginacao-info comic text-center text-muted small">
+            Você está na {{ page_obj.number }}º página de {{ paginator.num_pages }}
+        </div>
+    </nav>
+{% endif %}
