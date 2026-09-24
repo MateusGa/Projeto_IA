@@ -33,7 +33,7 @@
                     Corrigir seus Erros
                 </a> &emsp;
 
-                <a class="comic linhazinha som_dos_link" href="{% url "participantes_delete" participante.pk %}">
+                <a class="comic linhazinha som_dos_link" href="{% url "participantes_delete" participante.pk %}" data-confirm-delete data-item-name="{{ participante.Participante_nome }}">
                     APAGAR
                 </a>
             </td>

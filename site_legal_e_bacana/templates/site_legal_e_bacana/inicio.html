@@ -65,6 +65,12 @@
      {% elif titulosAleatorios == 10%}
         <h1 id="titulo" class="treme" style="padding-left: 80px" >Olha o DVD vuando aksdkak</h1>
 
+    {% elif titulosAleatorios == 11%}
+        <h1 id="titulo" class="treme" style="padding-left: 80px" >Harley esteve aqui</h1>
+
+    {% elif titulosAleatorios == 12%}
+        <h1 id="titulo" class="treme" style="padding-left: 80px" >Calendário alienígena</h1>
+
 
      {% else %}
         <h1 id="titulo" class="treme" style="padding-left: 80px" >Algo deu errado, F</h1>
@@ -87,7 +93,28 @@ function corAleatoria() {
 document.getElementById("titulo").style.color = corAleatoria();
 
 
-const dvd = document.getElementById("dvd");
+document.addEventListener('DOMContentLoaded', function () {
+    const dvd = document.getElementById('dvd');
+
+    if (dvd) {
+        dvd.addEventListener('click', function () {
+            if (window.bootbox) {
+                bootbox.alert({
+                    title: '💿',
+                    message: '💿',
+                    buttons: {
+                        ok: {
+                            label: 'OK',
+                            className: 'btn btn-primary comic'
+                        }
+                    }
+                });
+            } else {
+                alert('💿');
+            }
+        });
+    }
+});
 
 let x = 100;
 let y = 100;
@@ -133,7 +160,7 @@ function animar(){
 function titulosAleatorios()
 {
 
-return Math.floor(Math.random() * 11);
+return Math.floor(Math.random() * 13);
 
 }
 

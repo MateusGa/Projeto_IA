@@ -34,7 +34,7 @@
                     Corrigir seus Erros
                 </a> &emsp;
 
-                <a class="comic linhazinha som_dos_link" href="{% url "eventos_delete" evento.pk %}">
+                <a class="comic linhazinha som_dos_link" href="{% url "eventos_delete" evento.pk %}" data-confirm-delete data-item-name="{{ evento.Evento_nome }}">
                     APAGAR
                 </a>
             </td>
