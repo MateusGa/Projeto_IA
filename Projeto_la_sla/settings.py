@@ -49,7 +49,13 @@ INSTALLED_APPS = [
 
     #Django debug toolbar
     "debug_toolbar",
+
+    #Django Filter
+    'django_filters',
 ]
+
+# Email backend para desenvolvimento (exibe e-mails no console)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'

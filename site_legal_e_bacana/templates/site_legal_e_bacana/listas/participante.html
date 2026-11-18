@@ -10,7 +10,7 @@
 
 
 
-<table class="table table-striped table-hover comic" style="margin-top: 20px;">
+<table id="tabela-participantes" class="table table-striped table-hover comic" style="margin-top: 20px;">
 
     <thead>
         <tr>
@@ -60,6 +60,18 @@ function corAleatoria() {
 }
 
 document.getElementById("titulo").style.color = corAleatoria();
+</script>
+
+<script>
+$(document).ready(function() {
+    $('#tabela-participantes').DataTable({
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.13.7/i18n/pt-BR.json'
+        },
+        pageLength: 10,
+        order: [[0, 'asc']]
+    });
+});
 </script>
 
 {% endblock conteudo %}

@@ -13,6 +13,8 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeDoneV
 from django.contrib.auth import logout, update_session_auth_hash
 from django.shortcuts import redirect
 from braces.views import GroupRequiredMixin
+from django.contrib import messages
+from .filters import EventoFilter
 
 
 
@@ -108,12 +110,11 @@ class EventoCreate(LoginRequiredMixin, CreateView):
     #Sobrescreve o método form_valid para associar o evento ao usuário logado
     def form_valid(self, form):
 
-
         #Só os dados da instância 
         form.instance.Evento_usuario = self.request.user
         #Valida os dados, cri o objeto, salva no banco e retorna a url
         url = super().form_valid(form)
-
+        messages.success(self.request, "Evento criado com sucesso!")
         return url
 
 
@@ -141,6 +142,10 @@ class EventoUpdate(LoginRequiredMixin, UpdateView):
 
         return queryset
 
+    def form_valid(self, form):
+        messages.success(self.request, "Evento alterado com sucesso!")
+        return super().form_valid(form)
+
 
 class EventoDelete(LoginRequiredMixin, DeleteView):
 
@@ -160,6 +165,10 @@ class EventoDelete(LoginRequiredMixin, DeleteView):
 
         return queryset
 
+    def form_valid(self, form):
+        messages.success(self.request, "Evento excluído com sucesso!")
+        return super().form_valid(form)
+
 
 class EventoList(LoginRequiredMixin, ListView):
 
@@ -173,14 +182,21 @@ class EventoList(LoginRequiredMixin, ListView):
         queryset = super().get_queryset().filter(Evento_usuario=self.request.user).order_by("-Evento_entrega")
 
         hoje = date.today()
+        self.filterset = EventoFilter(self.request.GET, queryset=queryset)
+        filtered_qs = self.filterset.qs
 
-        for evento in queryset:
+        for evento in filtered_qs:
 
             evento.dias = (
                 evento.Evento_entrega - hoje
             ).days
         
-        return queryset
+        return filtered_qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = self.filterset
+        return context
 
 
 class EventoDetail(LoginRequiredMixin, DetailView):
@@ -229,7 +245,7 @@ class SubtarefaCreate(LoginRequiredMixin, CreateView):
         form.instance.Subtarefa_usuario = self.request.user
         #Valida os dados, cri o objeto, salva no banco e retorna a url
         url = super().form_valid(form)
-
+        messages.success(self.request, "Subtarefa criada com sucesso!")
         return url
 
 
@@ -251,6 +267,10 @@ class SubtarefaUpdate(LoginRequiredMixin, UpdateView):
 
         return queryset
 
+    def form_valid(self, form):
+        messages.success(self.request, "Subtarefa alterada com sucesso!")
+        return super().form_valid(form)
+
 
 class SubtarefaDelete(LoginRequiredMixin, DeleteView):
 
@@ -268,6 +288,10 @@ class SubtarefaDelete(LoginRequiredMixin, DeleteView):
         queryset = super().get_queryset().filter(Subtarefa_usuario=self.request.user)
 
         return queryset
+
+    def form_valid(self, form):
+        messages.success(self.request, "Subtarefa excluída com sucesso!")
+        return super().form_valid(form)
 
 
 class SubtarefaList(LoginRequiredMixin, ListView):
@@ -400,7 +424,7 @@ class LembreteCreate(LoginRequiredMixin, CreateView):
         form.instance.Lembrete_usuario = self.request.user
         #Valida os dados, cri o objeto, salva no banco e retorna a url
         url = super().form_valid(form)
-
+        messages.success(self.request, "Lembrete criado com sucesso!")
         return url
 
 
@@ -421,6 +445,10 @@ class LembreteUpdate(LoginRequiredMixin, UpdateView):
 
         return queryset
 
+    def form_valid(self, form):
+        messages.success(self.request, "Lembrete alterado com sucesso!")
+        return super().form_valid(form)
+
 
 class LembreteDelete(LoginRequiredMixin, DeleteView):
 
@@ -437,6 +465,10 @@ class LembreteDelete(LoginRequiredMixin, DeleteView):
         queryset = super().get_queryset().filter(Lembrete_usuario=self.request.user)
 
         return queryset
+
+    def form_valid(self, form):
+        messages.success(self.request, "Lembrete excluído com sucesso!")
+        return super().form_valid(form)
 
 
 class LembreteList(LoginRequiredMixin, ListView):
@@ -483,7 +515,7 @@ class ParticipanteCreate(LoginRequiredMixin, CreateView):
         form.instance.Participante_usuario = self.request.user
         #Valida os dados, cri o objeto, salva no banco e retorna a url
         url = super().form_valid(form)
-
+        messages.success(self.request, "Participante criado com sucesso!")
         return url
 
 
@@ -504,6 +536,10 @@ class ParticipanteUpdate(LoginRequiredMixin, UpdateView):
 
         return queryset
 
+    def form_valid(self, form):
+        messages.success(self.request, "Participante alterado com sucesso!")
+        return super().form_valid(form)
+
 
 class ParticipanteDelete(LoginRequiredMixin, DeleteView):
 
@@ -520,6 +556,10 @@ class ParticipanteDelete(LoginRequiredMixin, DeleteView):
         queryset = super().get_queryset().filter(Participante_usuario=self.request.user)
 
         return queryset
+
+    def form_valid(self, form):
+        messages.success(self.request, "Participante excluído com sucesso!")
+        return super().form_valid(form)
 
 
 class ParticipanteList(LoginRequiredMixin, ListView):

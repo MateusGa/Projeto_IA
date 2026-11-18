@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -24,5 +25,21 @@ urlpatterns = [
 
     #URL do Django admin Toolbar
     path('__debug__/', include('debug_toolbar.urls')),
-    #sempre começa com path
+
+    # Recuperação de senha
+    path('senha/recuperar/', auth_views.PasswordResetView.as_view(
+        template_name='site_legal_e_bacana/password_reset.html',
+        email_template_name='site_legal_e_bacana/password_reset_email.html',
+        success_url='/senha/recuperar/enviado/',
+    ), name='password_reset'),
+    path('senha/recuperar/enviado/', auth_views.PasswordResetDoneView.as_view(
+        template_name='site_legal_e_bacana/password_reset_done.html',
+    ), name='password_reset_done'),
+    path('senha/recuperar/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
+        template_name='site_legal_e_bacana/password_reset_confirm.html',
+        success_url='/senha/recuperar/concluido/',
+    ), name='password_reset_confirm'),
+    path('senha/recuperar/concluido/', auth_views.PasswordResetCompleteView.as_view(
+        template_name='site_legal_e_bacana/password_reset_complete.html',
+    ), name='password_reset_complete'),
 ]
