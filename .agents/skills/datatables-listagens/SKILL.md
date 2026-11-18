@@ -1,3 +1,4 @@
+---
 name: datatables-listagens
 description: Use sempre que for criar ou editar um template de listagem neste projeto Django — ListView, template *_list.html ou qualquer <table> que mostre registros de um queryset — para que toda lista use o DataTables do mesmo jeito: em português, com o tema do Bootstrap 5, busca e ordenação por coluna, sem paginação duplicada e com moeda e data brasileiras ordenando certo via data-sort.
 ---
